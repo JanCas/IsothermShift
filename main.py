@@ -70,12 +70,12 @@ initial_total_mass = 1.0 + baseline_q  # 1 g salt + dead‑water at start
 
 # Incremental uptake per g initial total mass
 iso["Adjusted uptake (g/g initial mass)"] = (1.0 + iso[q_col] - initial_total_mass) / initial_total_mass
-
+iso_view = iso[iso[rh_col] >= start_rh].copy()
 # -----------------------------------------------------------------------------
 # 6 – Plot adjusted isotherm
 # -----------------------------------------------------------------------------
 fig = px.line(
-    iso,
+    iso_view,
     x=rh_col,
     y="Adjusted uptake (g/g initial mass)",
     title=f"Adjusted Isotherm (start = {start_rh:.0f}% RH)",
